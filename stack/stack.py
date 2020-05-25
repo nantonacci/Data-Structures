@@ -9,51 +9,49 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+    Seems to work the same?
 """
-# array
+import sys
+sys.path.append('../doubly_linked_list')
+from doubly_linked_list import DoublyLinkedList
+
+# linked list
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = DoublyLinkedList()
 
     def __len__(self):
-        return len(self.storage)
+        return self.size
 
     def push(self, value):
-        self.storage.append(value)
+        self.size += 1
+        self.storage.add_to_tail(value)
 
     def pop(self):
-        if len(self.storage) > 0:
-            return self.storage.pop()
+        if self.size > 0:
+            self.size -= 1
+            popped_val = self.storage.remove_from_tail()
+            return popped_val
+        else:
+            return None
 
-# linked list
-
-# class Node:
-#     def __init__(self, data):
-#         self.data = data
-#         self.next = None
-#     def __len__(self):
-#         return len(self.data)
-
+# # array
 # class Stack:
 #     def __init__(self):
-#         self.head = None
+#         self.size = 0
+#         self.storage = []
 
 #     def __len__(self):
-#         return len(self.head)
+#         return self.size
 
-#     def push(self, data):
-#         if self.head is None:
-#             self.head = Node(data)
-#         else:
-#             new_node = Node(data)
-#             new_node.next = self.head
-#             self.head = new_node
+#     def push(self, value):
+#         self.size += 1
+#         self.storage.append(value)
 
 #     def pop(self):
-#         if self.head is None:
-#             return None
+#         if self.size > 0:
+#             self.size -= 1
+#             return self.storage.pop()
 #         else:
-#             popped = self.head.data
-#             self.head = self.head.next
-#             return popped
+#             return None

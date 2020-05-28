@@ -35,7 +35,7 @@ class Queue:
             return None
         
         removed_value = self.storage.remove_from_head()
-        self -= 1
+        self.size -= 1
 
         return removed_value
         

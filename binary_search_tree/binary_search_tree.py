@@ -69,7 +69,18 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node is True:
+            list = []
+            def fn(node):
+                list.append(node)
+            node.for_each(fn)
+            
+            ordered = list.sort()
+            for i in ordered:
+                print(i)
+        else:
+            return None
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
